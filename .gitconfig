@@ -1,0 +1,32 @@
+[user]
+    email = seidzuro@gmail.com
+    name = Yurii Bilous
+[color]
+    ui = auto
+[core]
+    compression = 0
+    editor = nvim
+[alias]
+    aliases = !git config --get-regexp alias | sed -re 's/alias\\.(\\S*)\\s(.*)$/\\1 = \\2/g'
+    st = status
+    lg = log --graph --date=relative --pretty=tformat:'%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%an %ad)%Creset'
+[config]
+    pager = cat
+    editor = lvim
+[credential]
+    helper = cache
+[difftool "vscode"]
+    cmd = code --wait --diff $LOCAL $REMOTE
+[grep]
+    break = true
+    heading = true
+    lineNumber = true
+    extendedRegexp = true
+[status]
+    submoduleSummary = true
+    showUntrackedFiles = all
+[color "branch"]
+    upstream = cyan
+[pager]
+    branch = false
+    log = false
