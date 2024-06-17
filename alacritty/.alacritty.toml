@@ -58,8 +58,12 @@ mods = "Control|Shift"
 history = 10000
 
 [window]
+decorations = "Full"
 opacity = 0.9
 
 [window.padding]
 x = 0
 y = 0
+
+[mouse]
+hide_when_typing = true
