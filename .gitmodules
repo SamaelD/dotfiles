@@ -1,3 +1,6 @@
 [submodule "nvim/.config/nvim"]
 	path = nvim/.config/nvim
 	url = git@github.com:SamaelD/nvim-config.git
+[submodule "fzf/.config/fzf-git"]
+	path = fzf/.config/fzf-git
+	url = https://github.com/junegunn/fzf-git.sh

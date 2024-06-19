@@ -1,0 +1,144 @@
+{
+  "layer": "tops",
+  "position": "top",
+  "output": "HDMI-A-1",
+  "height": 24,
+  "spacing": 5,
+  "margin-top": 5,
+  "margin-bottom": 5,
+  "modules-left": ["sway/workspaces","sway/mode"],
+  "modules-center": ["clock", "custom/weather"],
+  "modules-right": ["tray", "custom/updates", "sway/language", "group/hardware","pulseaudio", "bluetooth", "network", "upower", "power-profiles-daemon", "group/group-power"],
+  "tray": {
+      "spacing": 10,
+      "show-passive-items": true,
+  },
+  "sway/language": {
+      "on-click": "swaymsg input type:keyboard xkb_switch_layout next",
+  },
+  "group/hardware": {
+      "orientation": "inherit",
+      "modules": ["cpu", "memory", "disk"]
+  },
+  "cpu": {
+      "interval": 10,
+      "format": "{usage}% ",
+      "max-length": 10
+  },
+  "memory": {
+      "format": "{}% ",
+      "justify": "center",
+  },
+  "disk": {
+      "interval": 30,
+      "format": "{specific_used:0.0f} GB/{specific_total:0.0f} GB",
+      "unit": "GB"
+  },
+  "bluetooth": {
+      "format-connected": "{device_alias}",
+      "format-connected-battery": " {device_alias} {device_battery_percentage}%",
+      "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+      "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+      "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+      "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%"
+  },
+  "pulseaudio": {
+      "format": "{volume}% {icon}",
+      "format-bluetooth": "{volume}% {icon}",
+      "format-muted": "",
+      "format-icons": {
+          "alsa_output.pci-0000_00_1f.3.analog-stereo": "",
+          "alsa_output.pci-0000_00_1f.3.analog-stereo-muted": "",
+          "headphone": "",
+          "hands-free": "",
+          "headset": "",
+          "phone": "",
+          "phone-muted": "",
+          "portable": "",
+          "car": "",
+          "default": ["", ""]
+      },
+      "scroll-step": 1,
+      "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+      "on-click-right": "pavucontrol",
+      "ignored-sinks": ["Easy Effects Sink"]
+  },
+  "network": {
+      "format": "connecting..",
+      "format-wifi": "{essid} ({signalStrength}%) ",
+      "format-ethernet": "{ipaddr}/{cidr} 󰊗",
+      "format-disconnected": "on",
+      "tooltip-format": "{ifname} via {gwaddr} 󰊗",
+      "tooltip-format-wifi": "Network: {essid}\nIface: {ifname}\nIP: {ipaddr}\nUp: {bandwidthUpBytes}\nDown: {bandwidthDownBytes}\nTotal: {bandwidthTotalBytes}",
+      "tooltip-format-ethernet": "{ifname} ",
+      "tooltip-format-disconnected": "Disconnected",
+      "on-click": "~/.config/waybar/scripts/toggle_wifi.sh"
+  },
+  "upower": {
+      "icon-size": 20,
+      "hide-if-empty": true,
+      "tooltip": true,
+      "tooltip-spacing": 20
+  },
+  "clock": {
+      "format": "{:%a, %d. %b  %H:%M:%S}",
+      "interval": 1
+  },
+  "custom/weather": {
+      "format": "{}°",
+      "tooltip": true,
+      "interval": 3600,
+      "exec": "wttrbar",
+      "return-type": "json"
+  },
+  "power-profiles-daemon": {
+      "format": "{icon}",
+      "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+      "tooltip": true,
+      "format-icons": {
+          "default": "",
+          "performance": "",
+          "balanced": "",
+          "power-saver": ""
+      }
+  },
+  "group/group-power": {
+      "orientation": "horizontal",
+      "drawer": {
+          "transition-duration": 500,
+          "children-class": "not-power",
+          "transition-left-to-right": true,
+      },
+      "modules": ["custom/power", "custom/quit", "custom/lock", "custom/reboot"]
+  },
+  "custom/quit": {
+      "format": "󰗼",
+      "tooltip": false,
+      "on-click": "hyprctl dispatch exit"
+  },
+  "custom/lock": {
+      "format": "󰍁",
+      "tooltip": false,
+      "on-click": "swaylock"
+  },
+  "custom/reboot": {
+      "format": "󰜉",
+      "tooltip": false,
+      "on-click": "reboot"
+  },
+  "custom/power": {
+      "format": "󰐥",
+      "tooltip": false,
+      "on-click": "shutdown now"
+  },
+  "custom/updates": {
+      "format": "{} {icon}",
+      "return-type": "json",
+      "format-icons": {
+          "has-updates": "󱍷",
+          "updated": "󰂪"
+      },
+      "exec-if": "which waybar-module-pacman-updates",
+      "exec": "waybar-module-pacman-updates  --interval-seconds 5 --network-interval-seconds 300"
+  }
+}

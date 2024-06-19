@@ -1,0 +1,236 @@
+* {
+    /* `otf-font-awesome` is required to be installed for icons */
+    font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+    font-size: 16px;
+}
+
+button {
+    /* Use box-shadow instead of border so the text isn't offset */
+    box-shadow: inset 0 -3px transparent;
+    /* Avoid rounded borders under each button name */
+    border: none;
+    border-radius: 0;
+}
+
+/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
+button:hover {
+    background: inherit;
+    box-shadow: inset 0 -3px #ffffff;
+}
+
+label:focus {
+    background-color: #000000;
+}
+
+@keyframes blink {
+    to {
+        background-color: #ffffff;
+        color: #000000;
+    }
+}
+
+window#waybar {
+    background-color: rgba(43, 48, 59, 0.5);
+    border-bottom: 3px solid rgba(100, 114, 125, 0.5);
+    border-radius: 20px;
+    color: #ffffff;
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
+window#waybar.termite {
+    background-color: #3F3F3F;
+}
+
+window#waybar.chromium {
+    background-color: #000000;
+    border: none;
+}
+
+#workspaces {
+    border-radius: 20px;
+}
+
+#workspaces button {
+    padding: 0 5px;
+    background-color: transparent;
+    color: #ffffff;
+}
+
+#workspaces button:first-child {
+    border-radius: 20px 0 0 20px;
+}
+
+#workspaces button:hover {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+#workspaces button.focused {
+    background-color: #64727D;
+    box-shadow: inset 0 -3px #ffffff;
+}
+
+#workspaces button.urgent {
+    background-color: #eb4d4b;
+}
+
+#window,
+#workspaces {
+    margin: 0 4px;
+}
+
+#mode {
+    background-color: #64727D;
+    box-shadow: inset 0 -3px #ffffff;
+}
+
+/* If workspaces is the leftmost module, omit left margin */
+.modules-left > widget:first-child > #workspaces {
+    margin-left: 0;
+}
+
+/* If workspaces is the rightmost module, omit right margin */
+.modules-right > widget:last-child > #workspaces {
+    margin-right: 0;
+}
+
+#clock,
+#battery,
+#cpu,
+#memory,
+#disk,
+#network,
+#pulseaudio,
+#tray,
+#mode,
+#power-profiles-daemon {
+    padding: 0 10px;
+    color: #ffffff;
+}
+
+#clock {
+    background-color: transparent;
+}
+
+#tray {
+    background-color: transparent;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: #eb4d4b;
+}
+
+#language {
+    background: transparent;
+    padding: 0 5px;
+    margin: 0 5px;
+    min-width: 16px;
+}
+
+#hardware {
+    background-color: #64727D;
+}
+
+#cpu {
+    background-color: transparent;
+}
+
+#memory {
+    background-color: transparent;
+}
+
+#disk {
+    background-color: transparent;
+}
+
+#pulseaudio {
+    background-color: transparent;
+}
+
+#pulseaudio.muted {
+    background-color: transparent;
+}
+
+/* you can set a style on hover for any module like this */
+#pulseaudio:hover {
+    background-color: #a37800;
+}yay -Scc
+
+#bluetooth {
+    color: #f53c3c
+}
+
+#bluetooth.connected {
+    color: #2980b9
+}
+
+#network {
+    background-color: transparent;
+}
+
+#network.disconnected {
+    background-color: #f53c3c;
+}
+
+/* Using steps() instead of linear as a timing function to limit cpu usage */
+#battery.critical:not(.charging) {
+    background-color: #f53c3c;
+    color: #ffffff;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: steps(12);
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#power-profiles-daemon.performance {
+    background-color: transparent;
+    color: #f53c3c;
+}
+
+#power-profiles-daemon.balanced {
+    background-color: transparent;
+    color: #2980b9;
+}
+
+#power-profiles-daemon.power-saver {
+    background-color: transparent;
+    color: #2ecc71
+}
+
+#custom-power {
+    color: #ff1818;
+    padding-right: 15px;
+    background: transparent;
+    font-size: 23px;
+}
+
+#custom-quit {
+    color: #f59809;
+    padding-right: 15;
+    background: transparent;
+    font-size: 23px;
+}
+
+#custom-lock {
+    color: #6f05e5;
+    padding-right: 15;
+    background: transparent;
+    font-size: 23px;
+}
+
+#custom-reboot {
+    color: #00aba3;
+    padding-right: 15;
+    background: transparent;
+    font-size: 23px;
+}

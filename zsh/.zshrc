@@ -1,3 +1,5 @@
+export PATH=$PATH:$HOME/bin
+
 ## Options section
 setopt correct                                                  # Auto correct mistakes
 setopt extendedglob                                             # Extended globbing. Allows using regular expressions with *
@@ -67,6 +69,9 @@ zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
 zinit light zsh-users/zsh-syntax-highlighting
 
+autoload -U compinit colors zcalc
+compinit -d
+
 eval "$(zoxide init zsh)"
 
 ## Alias section
@@ -110,8 +115,7 @@ _fzf_compgen_dir() {
   fd --type=d --hidden --exclude .git . "$1"
 }
 
-# TODO:
-# source ~/fzf-git.sh/fzf-git.sh
+source ~/.config/fzf-git/fzf-git.sh
 
 export FZF_CTRL_T_OPTS="--preview 'bat -n --color=always --line-range :500 {}'"
 export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {} | head -200'"
