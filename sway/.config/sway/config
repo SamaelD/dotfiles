@@ -1,3 +1,5 @@
+include /etc/sway/config.d/*
+
 # Variables
 set $mod Mod4
 set $ws1 "1"
@@ -58,6 +60,11 @@ exec --no-startup-id xcompmgr
 #                 timeout 34 'brightnessctl s 5%' resume 'brightnessctl s 30%' \
 #                 timeout 40 'swaymsg "output * dpms off"; swaylock -f -c 000000' resume 'swaymsg "output * dpms on"'
 
+exec_always swayidle -w timeout 30 \
+                "hyprctl dispatcher dpms off && \
+                swaylock -f -i ~/.config/sway/wallpaper2.jpg" \
+                timeout 60 "systemctl suspend" \
+                timeout 120 "systemctl hibernate"
 
 # Mouse
 # Use Mouse+$mod to drag floating windows to their wanted position
@@ -70,7 +77,6 @@ input "type:keyboard" {
 }
 
 # Bindings
-# start a terminal
 bindsym $mod+Return exec alacritty
 bindsym $mod+Shift+t exec teams
 bindsym $mod+Shift+n exec nemo

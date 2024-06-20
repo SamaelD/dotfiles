@@ -1,0 +1,170 @@
+{
+    "clock": {
+        "format": "{:%a, %d. %b  %H:%M:%S}",
+        "interval": 1
+    },
+
+    "tray": {
+        "spacing": 10,
+        "show-passive-items": true,
+    },
+
+    "group/hardware": {
+        "orientation": "inherit",
+        "modules": ["cpu", "memory", "disk"]
+    },
+    "cpu": {
+        "interval": 10,
+        "format": "{usage}% ",
+        "max-length": 10
+    },
+    "memory": {
+        "format": "{}% ",
+        "justify": "center",
+    },
+    "disk": {
+        "interval": 30,
+        "format": "{specific_used:0.0f} GB/{specific_total:0.0f} GB",
+        "unit": "GB"
+    },
+
+    "group/connections": {
+        "orientation": "inherit",
+        "modules": [
+            "network",
+            "bluetooth",
+        ]
+    },
+    "bluetooth": {
+        "format": "",
+        "format-disabled": "󰂳",
+        "format-connected": "󰂱 {num_connections}",
+        "tooltip-format": " {device_alias}",
+        "tooltip-format-connected": "{device_enumerate}",
+        "tooltip-format-enumerate-connected": " {device_alias} 󰂄{device_battery_percentage}%",
+        "tooltip": true,
+    },
+    "network": {
+        "format": "{ifname}",
+        "format-wifi": "{icon}",
+        "format-ethernet": "󰌘",
+        "format-disconnected": "󰌙",
+        "tooltip-format": "{ipaddr}  {bandwidthUpBits}  {bandwidthDownBits}",
+        "format-linked": "󰈁 {ifname} (No IP)",
+        "tooltip-format-wifi": "{essid} {icon} {signalStrength}%",
+        "tooltip-format-ethernet": "{ifname} 󰌘",
+        "tooltip-format-disconnected": "󰌙 Disconnected",
+        "max-length": 30,
+        "format-icons": [
+            "󰤯", "󰤟", "󰤢", "󰤥", "󰤨"
+        ],
+        "on-click": "~/.config/waybar/scripts/toggle_wifi.sh"
+    },
+
+    "group/laptop": {
+        "orientation": "inherit",
+        "modules": [
+            "backlight",
+            "battery",
+        ]
+    },
+
+    "backlight": {
+        "format": "{icon} {percent}%",
+        "format-icons": [
+            " ",
+        " ",
+        " ",
+        "󰃝 ",
+        "󰃞 ",
+        "󰃟 ",
+        "󰃠 "
+        ],
+    },
+
+    "battery": {
+        "full-at": 95,
+        "states": {
+            "good": 90,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} {capacity}%",
+        "format-charging": "  {capacity}%",
+        "format-plugged": "󱘖  {capacity}%",
+        "format-icons": [
+            "󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"
+        ],
+    },
+
+    "custom/weather": {
+        "format": "{}°",
+        "tooltip": true,
+        "interval": 3600,
+        "exec": "wttrbar",
+        "return-type": "json"
+    },
+
+    "group/audio": {
+        "orientation": "inherit",
+        "drawer": {
+            "transition-duration": 500,
+            "children-class": "pulseaudio",
+            "transition-left-to-right": true
+        },
+        "modules": [
+            "pulseaudio",
+            "pulseaudio#microphone",
+        ]
+    },
+
+    "pulseaudio": {
+        "format": "{icon} {volume}% ",
+        "format-bluetooth": "{icon} {volume}%",
+        "format-bluetooth-muted": " {icon}",
+        "format-muted": "󰸈",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "scroll-step": 5,
+        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+        "on-click-right": "pavucontrol",
+        "ignored-sinks": ["Easy Effects Sink"]
+    },
+    "pulseaudio#microphone": {
+        "format": "{format_source}",
+        "format-source": " {volume}%",
+        "format-source-muted": "",
+        "tooltip-format": "{source_desc} | {source_volume}%",
+        "scroll-step": 5,
+    },
+
+    "power-profiles-daemon": {
+        "format": "{icon}",
+        "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+        "tooltip": true,
+        "format-icons": {
+            "default": "",
+            "performance": "",
+            "balanced": "",
+            "power-saver": ""
+        }
+    },
+
+    "custom/updates": {
+        "format": "{} {icon}",
+        "return-type": "json",
+        "format-icons": {
+            "has-updates": "󱍷",
+            "updated": "󰂪"
+        },
+        "exec-if": "which waybar-module-pacman-updates",
+        "exec": "waybar-module-pacman-updates  --interval-seconds 5 --network-interval-seconds 300"
+    },
+}

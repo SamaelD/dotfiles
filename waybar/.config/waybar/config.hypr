@@ -1,0 +1,39 @@
+{
+    "include": "~/.config/waybar/modules",
+    "layer": "tops",
+    "position": "top",
+    "output": "HDMI-A-1",
+    "height": 24,
+    "spacing": 5,
+    "margin-top": 5,
+    "margin-bottom": 5,
+    "margin-left": 8,
+    "margin-right": 8,
+    "ipc": true,
+    "modules-left": [
+        "hyprland/workspaces"
+    ],
+    "modules-center": [
+        "clock",
+        "custom/weather",
+    ],
+    "modules-right": [
+        "tray",
+        "hyprland/language",
+        "custom/updates",
+        "group/connections",
+        "group/audio",
+        "group/hardware",
+        "group/laptop",
+        "power-profiles-daemon",
+    ],
+
+    "hyprland/workspaces": {
+        "format": "{name}",
+        "on-scroll-up": "hyprctl dispatch workspace e+1",
+        "on-scroll-down": "hyprctl dispatch workspace e-1"
+    },
+    "hyprland/language": {
+        "format": "{short}",
+    },
+}

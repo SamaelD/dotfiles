@@ -1,3 +1,7 @@
+Configs are saved to not lose them in any case
+TODO:
+- Currently the configuration is a mess, especially sway/hyprland + waybr. It needs to be beatufied at some point
+
 Dependencies:
 - [gnu stow](https://www.gnu.org/software/stow/)
 - [alacritty](https://github.com/alacritty/alacritty)
@@ -12,6 +16,11 @@ Dependencies:
 - [swappy](https://github.com/jtheoof/swappy)
 - [rofi](https://github.com/davatorium/rofi)
 - [waybar](https://github.com/Alexays/Waybar)
+- wofi
+- hyprland
+- hypridle
+- hyprlock
+- hyrppaper
 
 Installation:
 ```bah
