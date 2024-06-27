@@ -11,14 +11,15 @@
     "margin-right": 8,
     "ipc": true,
     "modules-left": [
-        "hyprland/workspaces"
+        "hyprland/workspaces",
+        "hyprland/window",
     ],
     "modules-center": [
+        "tray",
         "clock",
         "custom/weather",
     ],
     "modules-right": [
-        "tray",
         "hyprland/language",
         "custom/updates",
         "group/connections",
@@ -26,12 +27,16 @@
         "group/hardware",
         "group/laptop",
         "power-profiles-daemon",
+        "group/group-power",
     ],
 
     "hyprland/workspaces": {
         "format": "{name}",
         "on-scroll-up": "hyprctl dispatch workspace e+1",
         "on-scroll-down": "hyprctl dispatch workspace e-1"
+    },
+    "hyprland/window": {
+        "format": "{}",
     },
     "hyprland/language": {
         "format": "{short}",

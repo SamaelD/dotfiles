@@ -1,31 +1,65 @@
 {
+    "user": {
+        "icon": true,
+        "interval": 1,
+        "height": 30,
+        "width": 30,
+        "avatar": "~/.config/hypr/avatar.png",
+    },
     "clock": {
         "format": "{:%a, %d. %b  %H:%M:%S}",
-        "interval": 1
+        "interval": 1,
+        "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "timezone": "Europe/Kyiv",
+        "calendar": {
+            "mode"          : "month",
+            "mode-mon-col"  : 3,
+            "weeks-pos"     : "left",
+            "on-scroll"     : 1,
+            "format": {
+                "months":     "<span color='#ffead3'><b>{}</b></span>",
+                "days":       "<span color='#ecc6d9'><b>{}</b></span>",
+                "weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
+                "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
+                "today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
+            }
+        },
+        "actions":  {
+            "on-click-right": "mode",
+        }
     },
 
     "tray": {
         "spacing": 10,
+        "icon-size": 20,
         "show-passive-items": true,
     },
 
     "group/hardware": {
         "orientation": "inherit",
-        "modules": ["cpu", "memory", "disk"]
+        "modules": ["cpu", "memory", "custom/swap", "disk"]
     },
     "cpu": {
         "interval": 10,
-        "format": "{usage}% ",
+        "format": "  {usage}%",
         "max-length": 10
     },
     "memory": {
-        "format": "{}% ",
+        "format": " {}%",
         "justify": "center",
+    },
+    "custom/swap": {
+        "format": "  {}%",
+        "exec": "~/.config/waybar/scripts/read_swap.sh",
+        "interval": 30,
     },
     "disk": {
         "interval": 30,
-        "format": "{specific_used:0.0f} GB/{specific_total:0.0f} GB",
-        "unit": "GB"
+        "format": "  {specific_used:0.0f} GB/{specific_total:0.0f} GB",
+        "unit": "GB",
+        "states": {
+            "low": 90
+        }
     },
 
     "group/connections": {
@@ -36,7 +70,7 @@
         ]
     },
     "bluetooth": {
-        "format": "",
+        "format": "  ",
         "format-disabled": "󰂳",
         "format-connected": "󰂱 {num_connections}",
         "tooltip-format": " {device_alias}",
@@ -46,7 +80,7 @@
     },
     "network": {
         "format": "{ifname}",
-        "format-wifi": "{icon}",
+        "format-wifi": " {icon} ",
         "format-ethernet": "󰌘",
         "format-disconnected": "󰌙",
         "tooltip-format": "{ipaddr}  {bandwidthUpBits}  {bandwidthDownBits}",
@@ -119,7 +153,7 @@
     },
 
     "pulseaudio": {
-        "format": "{icon} {volume}% ",
+        "format": " {icon} {volume}% ",
         "format-bluetooth": "{icon} {volume}%",
         "format-bluetooth-muted": " {icon}",
         "format-muted": "󰸈",
@@ -130,7 +164,7 @@
             "phone": "",
             "portable": "",
             "car": "",
-            "default": ["", "", ""]
+            "default": ["󰕿", "󰖀", "󰕾"]
         },
         "scroll-step": 5,
         "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
@@ -139,14 +173,15 @@
     },
     "pulseaudio#microphone": {
         "format": "{format_source}",
-        "format-source": " {volume}%",
-        "format-source-muted": "",
+        "format-source": "  {volume}%",
+        "format-source-muted": " ",
         "tooltip-format": "{source_desc} | {source_volume}%",
         "scroll-step": 5,
+        "on-click": "amixer set Capture toggle"
     },
 
     "power-profiles-daemon": {
-        "format": "{icon}",
+        "format": " {icon} ",
         "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
         "tooltip": true,
         "format-icons": {
@@ -158,7 +193,7 @@
     },
 
     "custom/updates": {
-        "format": "{} {icon}",
+        "format": "{} {icon} ",
         "return-type": "json",
         "format-icons": {
             "has-updates": "󱍷",
@@ -167,4 +202,35 @@
         "exec-if": "which waybar-module-pacman-updates",
         "exec": "waybar-module-pacman-updates  --interval-seconds 5 --network-interval-seconds 300"
     },
+
+    "group/group-power": {
+        "orientation": "horizontal",
+        "drawer": {
+            "transition-duration": 500,
+            "children-class": "not-power",
+            "transition-left-to-right": true,
+        },
+        "modules": ["custom/power", "custom/quit", "custom/lock", "custom/reboot"]
+    },
+    "custom/quit": {
+        "format": " 󰗼 ",
+        "tooltip": false,
+        "on-click": "hyprctl dispatch exit"
+    },
+    "custom/lock": {
+        "format": " 󰍁 ",
+        "tooltip": false,
+        "on-click": "swaylock"
+    },
+    "custom/reboot": {
+        "format": " 󰜉 ",
+        "tooltip": false,
+        "on-click": "reboot"
+    },
+    "custom/power": {
+        "format": " 󰐥 ",
+        "tooltip": false,
+        "on-click": "shutdown now"
+    },
+
 }
