@@ -21,7 +21,7 @@
     ],
     "modules-right": [
         "hyprland/language",
-        "custom/updates",
+        "custom/pacman",
         "group/connections",
         "group/audio",
         "group/hardware",
@@ -31,12 +31,23 @@
     ],
 
     "hyprland/workspaces": {
-        "format": "{name}",
+        "format": "{icon} {name}",
+        "format-icons": {
+            "active": "",
+            "default": ""
+        },
+        "all-outputs": true,
         "on-scroll-up": "hyprctl dispatch workspace e+1",
-        "on-scroll-down": "hyprctl dispatch workspace e-1"
+        "on-scroll-down": "hyprctl dispatch workspace e-1",
+        "window-rewrite-default": "",
+        "window-rewrite": {
+            "title<.*youtube.*>": "",
+            "Code": "󰨞",
+            "teams-for-linux": "\uf0c0",
+        },
     },
     "hyprland/window": {
-        "format": "{}",
+        "format": "➤ {title}",
     },
     "hyprland/language": {
         "format": "{short}",

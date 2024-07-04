@@ -77,6 +77,7 @@
         "tooltip-format-connected": "{device_enumerate}",
         "tooltip-format-enumerate-connected": " {device_alias} 󰂄{device_battery_percentage}%",
         "tooltip": true,
+        "on-click": "blueman-manager",
     },
     "network": {
         "format": "{ifname}",
@@ -192,15 +193,15 @@
         }
     },
 
-    "custom/updates": {
-        "format": "{} {icon} ",
+    "custom/pacman": {
+        "format": "{icon}{} ",
         "return-type": "json",
         "format-icons": {
-            "has-updates": "󱍷",
+            "pending-updates": " 󱍷  ",
             "updated": "󰂪"
         },
-        "exec-if": "which waybar-module-pacman-updates",
-        "exec": "waybar-module-pacman-updates  --interval-seconds 5 --network-interval-seconds 300"
+        "exec-if": "which waybar-updates",
+        "exec": "waybar-updates"
     },
 
     "group/group-power": {

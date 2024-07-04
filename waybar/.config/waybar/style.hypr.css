@@ -56,6 +56,18 @@ label:focus {
     }
 }
 
+@keyframes blink-update {
+    to {
+        background-color: dodgerblue;
+    }
+}
+
+#window {
+    color: @teal;
+    border-radius: 20px;
+    padding-right: 10px;
+}
+
 window#waybar {
     /*background-color: rgba(43, 48, 59, 0.5);*/
     background-color: @base;
@@ -79,13 +91,15 @@ window#waybar.chromium {
     border: none;
 }
 
+window#waybar.empty #window {
+    background-color: transparent;
+}
+
 #workspaces {
     border-radius: 20px;
 }
 
 #workspaces button {
-    padding: 0 5px;
-    background-color: transparent;
     color: @text;
 }
 
@@ -104,10 +118,20 @@ window#waybar.chromium {
 
 #workspaces button.urgent {
     background-color: @red;
+    border-radius: 1em;
+    color: @text;
+}
+
+#workspaces button.visible {
+    color: @blue;
 }
 
 #workspaces button.active {
     color: @green;
+}
+
+#workspaces button.empty {
+    color: @overlay0;
 }
 
 #window,
@@ -116,12 +140,12 @@ window#waybar.chromium {
 }
 
 /* If workspaces is the leftmost module, omit left margin */
-.modules-left > widget:first-child > #workspaces {
+.modules-left>widget:first-child>#workspaces {
     margin-left: 0;
 }
 
 /* If workspaces is the rightmost module, omit right margin */
-.modules-right > widget:last-child > #workspaces {
+.modules-right>widget:last-child>#workspaces {
     margin-right: 0;
 }
 
@@ -146,16 +170,16 @@ window#waybar.chromium {
     color: @red;
 }
 
-#tray > .passive {
+#tray>.passive {
     -gtk-icon-effect: dim;
 }
 
-#tray > .needs-attention {
+#tray>.needs-attention {
     -gtk-icon-effect: highlight;
     background-color: @red;
 }
 
-#tray > :hover {
+#tray> :hover {
     background-color: @overlay1;
 }
 
@@ -163,6 +187,17 @@ window#waybar.chromium {
     padding: 0 5px;
     margin: 0 5px;
     min-width: 16px;
+}
+
+#custom-pacman {
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#custom-pacman.pending-updates {
+    animation-name: blink-update;
+    animation-duration: 3s;
 }
 
 #pulseaudio.muted {
