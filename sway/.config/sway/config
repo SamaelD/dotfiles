@@ -1,5 +1,14 @@
 include /etc/sway/config.d/*
 
+# display settings
+output HDMI-A-1 mode 2560x1440@144Hz pos 0 0
+output HDMI-A-1 bg ~/.config/sway/wallpaper3.jpg fill
+output eDP-1 mode 1920x1200@60Hz pos 2560 0
+output eDP-1 bg ~/.config/hypr/lockscreen.jpg fill
+
+# generic
+font pango:monospace 8
+
 # Variables
 set $mod Mod4
 set $ws1 "1"
@@ -12,6 +21,44 @@ set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
+
+# exec
+exec --no-startup-id mako
+
+# idle configuration
+exec_always swayidle -w timeout 30                              \
+                "hyprctl dispatcher dpms off &&                 \
+                swaylock -f -i ~/.config/hypr/lockscreen.jpg"   \
+                timeout 60 "systemctl suspend"                  \
+                timeout 120 "systemctl hibernate"
+
+# mouse
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# Keyaboard
+input "type:keyboard" {
+    xkb_layout us,ua,ru
+    xkb_options grp:alt_shift_toggle
+}
+
+# bar
+bar {
+    swaybar_command waybar
+}
+
+# visual
+default_border none
+default_floating_border none
+gaps inner 4
+gaps outer 4
+
+set $opacity 0.9
+for_window [class=".*"] opacity $opacity
+for_window [app_id=".*"] opacity $opacity
+for_window [class="Code"] opacity 0.7
+for_window [class="teams-for-linux"] opacity 0.95
+for_window [class="dlt-viewer"] opacity 0.8
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -38,58 +85,19 @@ mode "resize" {
         bindsym $mod+r mode "default"
 }
 
-font pango:monospace 8
-
-output HDMI-A-1 mode 2560x1440@144Hz pos 0 0
-output HDMI-A-1 bg ~/.config/sway/wallpaper1.jpg fill
-output eDP-1 mode 1920x1200@60Hz pos 2560 0
-output eDP-1 bg ~/.config/sway/wallpaper1.jpg fill
-
-# Exec
-exec --no-startup-id dex --autostart --environment i3
-exec --no-startup-id mako
-# NetworkManager is the most popular way to manage wireless networks on Linux,
-# and nm-applet is a desktop environment-independent system tray GUI for it.
-exec --no-startup-id nm-applet
-exec --no-startup-id xcompmgr
-
-# exec_always swayidle -w timeout 30 'brightnessctl s 25%' resume 'brightnessctl s 30%' \
-#                 timeout 31 'brightnessctl s 20%' resume 'brightnessctl s 30%' \
-#                 timeout 32 'brightnessctl s 15%' resume 'brightnessctl s 30%' \
-#                 timeout 33 'brightnessctl s 10%' resume 'brightnessctl s 30%' \
-#                 timeout 34 'brightnessctl s 5%' resume 'brightnessctl s 30%' \
-#                 timeout 40 'swaymsg "output * dpms off"; swaylock -f -c 000000' resume 'swaymsg "output * dpms on"'
-
-exec_always swayidle -w timeout 30 \
-                "hyprctl dispatcher dpms off && \
-                swaylock -f -i ~/.config/sway/wallpaper2.jpg" \
-                timeout 60 "systemctl suspend" \
-                timeout 120 "systemctl hibernate"
-
-# Mouse
-# Use Mouse+$mod to drag floating windows to their wanted position
-floating_modifier $mod
-
-# Keyaboard
-input "type:keyboard" {
-    xkb_layout us,ua,ru
-    xkb_options grp:alt_shift_toggle
-}
-
 # Bindings
+# apps
 bindsym $mod+Return exec alacritty
-bindsym $mod+Shift+t exec teams
-bindsym $mod+Shift+n exec nemo
 bindsym $mod+Shift+f exec grim -g "$(slurp)" - | swappy -f -
-bindsym $mod+Shift+v exec code
-bindsym $mod+Shift+o exec opera
-bindsym $mod+Shift+d exec dlt-viewer
+bindsym $mod+w exec waybar
 
-# kill focused window
-bindsym $mod+Shift+q kill
-# start dmenu (a program launcher)
-bindcode $mod+40 exec "rofi -modi drun,run -show drun"
+bindsym $mod+q kill
+bindcode $mod+40 exec "wofi --show drun -I --prompt"
 
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
@@ -99,30 +107,18 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-# split in horizontal orientation
-bindsym $mod+h split h
-# split in vertical orientation
-bindsym $mod+v split v
+bindsym $mod+Shift+h split h
+bindsym $mod+Shift+v split v
 
-# enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
-# change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
-
-# toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
-
-# change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
-
-# focus the parent container
 bindsym $mod+a focus parent
 
-bindsym $mod+Ctrl+Shift+l 		exec --no-startup-id swaylock --image ~/.config/sway/wallpaper2.jpg -k -l
+bindsym $mod+Shift+o exec "pkill swayidle"
 
-# switch to workspace
 bindsym $mod+1 workspace number $ws1
 bindsym $mod+2 workspace number $ws2
 bindsym $mod+3 workspace number $ws3
@@ -133,8 +129,6 @@ bindsym $mod+7 workspace number $ws7
 bindsym $mod+8 workspace number $ws8
 bindsym $mod+9 workspace number $ws9
 bindsym $mod+0 workspace number $ws10
-
-# move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace number $ws1
 bindsym $mod+Shift+2 move container to workspace number $ws2
 bindsym $mod+Shift+3 move container to workspace number $ws3
@@ -146,23 +140,6 @@ bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
-# reload the configuration file
-bindsym $mod+Shift+c reload
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
-# exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+r reload
 
 bindsym $mod+r mode "resize"
-
-# Visual settings
-default_border none
-default_floating_border none
-
-bar {
-    swaybar_command waybar
-}
-
-gaps inner 4
-gaps outer 4
-
