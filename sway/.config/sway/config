@@ -24,6 +24,7 @@ set $ws10 "10"
 
 # exec
 exec --no-startup-id mako
+exec_always --no-startup-id autotiling
 
 # idle configuration
 exec_always swayidle -w timeout 30                              \

@@ -30,7 +30,11 @@
         "group/group-power"
     ],
     "swap/workspaces": {
-        "format": "{name}",
+        "format": "{icon} {name}",
+        "format-icons": {
+            "active": "",
+            "default": ""
+        },
         "all-outputs": true,
     },
     "swap/window": {
