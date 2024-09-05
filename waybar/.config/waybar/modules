@@ -6,6 +6,10 @@
         "width": 30,
         "avatar": "~/.config/hypr/avatar.png",
     },
+    "group/middle": {
+        "orientation": "inherit",
+        "modules": ["tray", "clock", "custom/weather"]
+    },
     "clock": {
         "format": "{:%a, %d. %b  %H:%M:%S}",
         "interval": 1,
@@ -31,7 +35,7 @@
 
     "tray": {
         "spacing": 10,
-        "icon-size": 20,
+        "icon-size": 21,
         "show-passive-items": true,
     },
 

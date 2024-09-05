@@ -1,8 +1,8 @@
-@import url('./theme.css');
+@import "theme.css";
 
 * {
-    /* `otf-font-awesome` is required to be installed for icons */
-    font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+    /* font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif; */
+    font-family: FantasqueSansMono Nerd Font;
     font-size: 16px;
 }
 
@@ -26,7 +26,7 @@ label:focus {
 
 @keyframes blink {
     to {
-        background-color: @text;
+        background-color: @blue;
         color: #000000;
     }
 }
@@ -37,80 +37,56 @@ label:focus {
     }
 }
 
-#window {
-    color: @teal;
-    border-radius: 20px;
-    padding-right: 10px;
-}
-
-window#waybar {
+#waybar {
+    color: @blue;
     background-color: rgba(43, 48, 59, 0.5);
-    border-bottom: 3px solid rgba(100, 114, 125, 0.5);
     border-radius: 20px;
-    color: @text;
+    margin: 5px 5px;
     transition-property: background-color;
     transition-duration: .5s;
 }
 
-window#waybar.hidden {
-    opacity: 0.2;
-}
-
-window#waybar.termite {
-    background-color: @base;
-}
-
-window#waybar.chromium {
-    background-color: #000000;
-    border: none;
-}
-
-window#waybar.empty #window {
-    background-color: transparent;
+#window,
+#workspaces {
+    margin: 0 4px;
 }
 
 #workspaces {
-    border-radius: 20px;
+    border-radius: 1rem;
+    margin-left: 1rem;
 }
 
 #workspaces button {
-    color: @text;
-}
-
-#workspaces button:first-child {
-    border-radius: 20px 0 0 20px;
-}
-
-#workspaces button:hover {
-    background: rgba(0, 0, 0, 0.2);
-}
-
-#workspaces button.focused {
-    background-color: #64727D;
-    box-shadow: inset 0 -3px @text;
-}
-
-#workspaces button.urgent {
-    background-color: @red;
-    border-radius: 1em;
-    color: @text;
-}
-
-#workspaces button.visible {
-    color: @blue;
+    color: @lavender;
+    border-radius: 1rem;
+    padding: 0.4rem;
 }
 
 #workspaces button.active {
-    color: @green;
+    color: @sky;
+    border-radius: 1rem;
+}
+
+#workspaces button:hover {
+    color: @sapphire;
+    border-radius: 1rem;
+}
+
+#workspaces button.urgent {
+    border-radius: 1rem;
+    color: @red;
 }
 
 #workspaces button.empty {
     color: @overlay0;
 }
 
-#window,
-#workspaces {
-    margin: 0 4px;
+#workspaces button.visible {
+    color: @blue;
+}
+
+#workspaces button.focused {
+    color: @sapphire;
 }
 
 /* If workspaces is the leftmost module, omit left margin */
@@ -123,21 +99,31 @@ window#waybar.empty #window {
     margin-right: 0;
 }
 
+#window {
+    color: @sapphire;
+    border-radius: 20px;
+    padding-right: 10px;
+}
+
 #clock {
     padding: 0 10px;
-    color: @text;
+    color: @blue;
+}
+
+#custom-weather {
+    color: @blue;
 }
 
 #battery {
     padding-left: 10;
-    color: @text;
+    color: @blue;
 }
 
 #cpu,
 #memory,
 #disk {
     padding: 0 5px;
-    color: @text;
+    color: @blue;
 }
 
 #disk.low {
@@ -154,6 +140,7 @@ window#waybar.empty #window {
 }
 
 #tray> :hover {
+    border-radius: 1rem;
     background-color: @overlay1;
 }
 
@@ -179,7 +166,7 @@ window#waybar.empty #window {
 }
 
 #pulseaudio.microphone {
-    color: @text
+    color: @blue
 }
 
 #pulseaudio.microphone.muted {
@@ -214,7 +201,7 @@ window#waybar.empty #window {
 /* Using steps() instead of linear as a timing function to limit cpu usage */
 #battery.critical:not(.charging) {
     background-color: @red;
-    color: @text;
+    color: @blue;
     animation-name: blink;
     animation-duration: 0.5s;
     animation-timing-function: steps(12);

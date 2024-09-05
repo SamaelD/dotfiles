@@ -2,11 +2,11 @@
     "include": "~/.config/waybar/modules",
     "layer": "tops",
     "position": "top",
-    "output": "HDMI-A-1",
+    "output": ["HDMI-A-1", "eDP-1"],
     "height": 24,
     "spacing": 5,
     "margin-top": 5,
-    "margin-bottom": 5,
+    "margin-bottom": 0,
     "margin-left": 8,
     "margin-right": 8,
     "ipc": true,
@@ -15,9 +15,7 @@
         "hyprland/window",
     ],
     "modules-center": [
-        "tray",
-        "clock",
-        "custom/weather",
+        "group/middle"
     ],
     "modules-right": [
         "hyprland/language",
