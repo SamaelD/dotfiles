@@ -1,0 +1,236 @@
+@import "theme.css";
+
+* {
+    font-family: FantasqueSansMono Nerd Font;
+    font-size: 16px;
+    min-height: 0;
+}
+
+#waybar {
+    background: transparent;
+    color: @text;
+    margin: 5px 5px;
+}
+
+#window,
+#workspaces {
+    margin: 0 4px;
+}
+
+#workspaces {
+    border-radius: 1rem;
+    margin: 5px;
+    background-color: @surface0;
+    margin-left: 1rem;
+}
+
+#workspaces button {
+    color: @lavender;
+    border-radius: 1rem;
+    padding: 0.4rem;
+}
+
+#workspaces button.active {
+    color: @sky;
+    border-radius: 1rem;
+}
+
+#workspaces button:hover {
+    color: @sapphire;
+    border-radius: 1rem;
+}
+
+#workspaces button.urgent {
+    border-radius: 1rem;
+    color: @red;
+}
+
+#workspaces button.empty {
+    color: @overlay0;
+}
+
+#workspaces button.visible {
+    color: @blue;
+}
+
+/* If workspaces is the leftmost module, omit left margin */
+.modules-left>widget:first-child>#workspaces {
+    margin-left: 0;
+}
+
+/* If workspaces is the rightmost module, omit right margin */
+.modules-right>widget:last-child>#workspaces {
+    margin-right: 0;
+}
+
+#window {
+    color: @teal;
+    border-radius: 20px;
+    padding-right: 10px;
+}
+
+#tray,
+#clock,
+#custom-weather {
+    background-color: @surface0;
+    padding: 0.5rem 1rem;
+    margin: 5px 0;
+}
+
+#tray {
+    border-radius: 1rem 0px 0px 1rem;
+}
+
+#clock {
+    color: @blue;
+}
+
+#custom-weather {
+    color: @blue;
+    border-radius: 0px 1rem 1rem 0px;
+}
+
+#language,
+#custom-pacman,
+#network,
+#bluetooth,
+
+
+#custom-reboot {
+    background-color: @surface0;
+    padding: 0.5rem 1rem;
+    margin: 5px 0;
+}
+
+#language {
+    border-radius: 1rem 0px 0px 1rem;
+}
+
+#custom-pacman {
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#custom-pacman.pending-updates {
+    animation-name: blink-update;
+    animation-duration: 3s;
+}
+
+#network {
+    border-radius: 1rem 0px 0px 1rem;
+}
+
+#network:hover {
+    background-color: @overlay1;
+}
+
+#network.disconnected {
+    background-color: @red;
+}
+
+#bluetooth {
+    border-radius: 0px 1rem 1rem 0px;
+}
+
+#bluetooth:hover {
+    background-color: @overlay1;
+}
+
+#bluetooth.connected {
+    color: @blue;
+}
+
+#custom-reboot {
+ border-radius: 0px 1rem 1rem 0px;
+}
+
+
+/* #window { */
+/*     color: @teal; */
+/*     border-radius: 20px; */
+/*     padding-right: 10px; */
+/* } */
+/**/
+/* window#waybar { */
+/*     background-color: rgba(43, 48, 59, 0.5); */
+/*     border-bottom: 3px solid rgba(100, 114, 125, 0.5); */
+/*     border-radius: 20px; */
+/*     color: @text; */
+/*     transition-property: background-color; */
+/*     transition-duration: .5s; */
+/* } */
+/**/
+/* window#waybar.hidden { */
+/*     opacity: 0.2; */
+/* } */
+/**/
+/* window#waybar.termite { */
+/*     background-color: @base; */
+/* } */
+/**/
+/* window#waybar.chromium { */
+/*     background-color: #000000; */
+/*     border: none; */
+/* } */
+/**/
+/* window#waybar.empty #window { */
+/*     background-color: transparent; */
+/* } */
+/**/
+/* #workspaces { */
+/*     border-radius: 20px; */
+/* } */
+/**/
+/* #workspaces button { */
+/*     color: @text; */
+/* } */
+/**/
+/* #workspaces button:first-child { */
+/*     border-radius: 20px 0 0 20px; */
+/* } */
+/**/
+/* #workspaces button:hover { */
+/*     background: rgba(0, 0, 0, 0.2); */
+/* } */
+/**/
+/* #workspaces button.focused { */
+/*     background-color: #64727D; */
+/*     box-shadow: inset 0 -3px @text; */
+/* } */
+/**/
+/* #workspaces button.urgent { */
+/*     background-color: @red; */
+/*     border-radius: 1em; */
+/*     color: @text; */
+/* } */
+/**/
+/* #workspaces button.visible { */
+/*     color: @blue; */
+/* } */
+/**/
+/* #workspaces button.active { */
+/*     color: @green; */
+/* } */
+/**/
+/* #workspaces button.empty { */
+/*     color: @overlay0; */
+/* } */
+/**/
+/* #window, */
+/* #workspaces { */
+/*     margin: 0 4px; */
+/* } */
+/**/
+/* /* If workspaces is the leftmost module, omit left margin */
+*/
+/* .modules-left>widget:first-child>#workspaces { */
+/*     margin-left: 0; */
+/* } */
+/**/
+/* /* If workspaces is the rightmost module, omit right margin */
+*/
+/* .modules-right>widget:last-child>#workspaces { */
+/*     margin-right: 0; */
+/* } */
+

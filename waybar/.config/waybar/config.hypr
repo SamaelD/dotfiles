@@ -29,19 +29,24 @@
     ],
 
     "hyprland/workspaces": {
-        "format": "{icon} {name}",
+        "format": "{icon} {name} {windows}",
         "format-icons": {
             "active": "",
             "default": ""
         },
-        "all-outputs": true,
+        "all-outputs": false,
         "on-scroll-up": "hyprctl dispatch workspace e+1",
         "on-scroll-down": "hyprctl dispatch workspace e-1",
         "window-rewrite-default": "",
         "window-rewrite": {
-            "title<.*youtube.*>": "",
-            "Code": "󰨞",
-            "teams-for-linux": "\uf0c0",
+            "class<Vivaldi-stable>": "𝕍",
+            "title<.*youtube.*>": " ",
+            "class<firefox>": " ",
+            "class<teams-for-linux>": " ",
+            "class<kitty>": " ",
+            "class<ChatGPT Desktop>": " ",
+            "class<Nemo>": " ",
+            "class<dlt-viewer>": " ",
         },
     },
     "hyprland/window": {
