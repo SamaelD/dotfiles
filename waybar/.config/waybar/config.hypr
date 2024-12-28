@@ -31,13 +31,13 @@
     "hyprland/workspaces": {
         "format": "{icon} {name} {windows}",
         "format-icons": {
-            "active": "",
-            "default": ""
+            "active": " ",
+            "default": " "
         },
         "all-outputs": false,
         "on-scroll-up": "hyprctl dispatch workspace e+1",
         "on-scroll-down": "hyprctl dispatch workspace e-1",
-        "window-rewrite-default": "",
+        "window-rewrite-default": " ",
         "window-rewrite": {
             "class<Vivaldi-stable>": "𝕍",
             "title<.*youtube.*>": " ",
