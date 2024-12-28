@@ -2,7 +2,8 @@
 
 swap_info=$(free -m | awk '/Swap/ {print $2, $3}')
 
-read -r swap_total swap_used <<< "$swap_info"
+swap_total=$(awk '{print $1}')
+swap_used=$(awk '{print $2}')
 
 if [ "$swap_total" -ne 0 ]; then
     # Calculate the percentage of swap used
