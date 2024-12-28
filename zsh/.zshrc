@@ -1,4 +1,9 @@
-export PATH=$PATH:$HOME/bin
+export PATH=$PATH:$HOME/bin:/home/linuxbrew/.linuxbrew/bin
+
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+[ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
+[ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+source "${ZINIT_HOME}/zinit.zsh"
 
 ## Options section
 setopt correct                                                  # Auto correct mistakes
@@ -56,7 +61,6 @@ bindkey '^H' backward-kill-word                                 # delete previou
 bindkey '^[[Z' undo                                             # Shift+tab undo last action
 
 ## Plugins section
-source "/usr/share/zinit/zinit.zsh"
 zinit snippet OMZP::git
 zinit snippet OMZP::sudo
 zinit snippet OMZP::aws
