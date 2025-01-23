@@ -34,12 +34,16 @@ final_space = true
     background = 'transparent'
     type = 'git'
     style = 'plain'
+    async = true
 
     [blocks.segments.properties]
       branch_icon = ''
       cache_duration = 'none'
       commit_icon = '@'
       fetch_status = true
+
+    [blocks.segments.properties.ignore_submodules]
+      "*" = "all"
 
 [[blocks]]
   type = 'rprompt'
