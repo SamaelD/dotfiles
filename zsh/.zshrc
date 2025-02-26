@@ -1,4 +1,4 @@
-export PATH=$PATH:$HOME/bin:/home/linuxbrew/.linuxbrew/bin
+export PATH=$PATH:$HOME/bin:$HOME/bin/work:/home/linuxbrew/.linuxbrew/bin:/usr/lib/qt6/bin/:$HOME/.local/bin
 
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 [ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
@@ -31,6 +31,7 @@ HISTFILE=~/.zhistory
 HISTSIZE=10000
 SAVEHIST=10000
 
+export VISUAL=/usr/bin/nvim
 export EDITOR=/usr/bin/nvim
 
 ## Keybindings section
@@ -73,8 +74,8 @@ zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
 zinit light zsh-users/zsh-syntax-highlighting
 
-autoload -U compinit colors zcalc
-compinit -d
+autoload -Uz compinit colors zcalc
+compinit -d -C
 
 eval "$(zoxide init zsh)"
 
