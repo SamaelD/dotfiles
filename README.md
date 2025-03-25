@@ -27,5 +27,8 @@ Installation:
 stow -S alacritty git nvim oh-my-posh tmux zsh sway waybar -t $HOME
 ```
 
+TODO:
+- provide an install script
+
 References:
 - [Zen theme](https://github.com/dreamsofautonomy/zen-omp)
