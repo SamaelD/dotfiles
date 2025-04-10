@@ -260,3 +260,7 @@ label:focus {
 #custom-reboot:hover {
     background-color: @overlay1;
 }
+
+#custom-notification {
+  font-family: "NotoSansMono Nerd Font";
+}
