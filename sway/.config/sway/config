@@ -2,9 +2,9 @@ include /etc/sway/config.d/*
 
 # display settings
 output HDMI-A-1 mode 2560x1440@144Hz pos 0 0
-output HDMI-A-1 bg ~/.config/sway/wallpaper3.jpg fill
+output HDMI-A-1 bg ~/Pictures/wallpapers/wallpaper3.jpg fill
 output eDP-1 mode 1920x1200@60Hz pos 2560 0
-output eDP-1 bg ~/.config/hypr/lockscreen.jpg fill
+output eDP-1 bg ~/Pictures/lockscreen.jpg fill
 
 # generic
 font pango:monospace 8
@@ -29,7 +29,7 @@ exec_always --no-startup-id autotiling
 # idle configuration
 exec_always swayidle -w timeout 30                              \
                 "hyprctl dispatcher dpms off &&                 \
-                swaylock -f -i ~/.config/hypr/lockscreen.jpg"   \
+                swaylock -f -i ~/Pictures/lockscreen.jpg"   \
                 timeout 60 "systemctl suspend"                  \
                 timeout 120 "systemctl hibernate"
 
