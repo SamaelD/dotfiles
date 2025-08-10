@@ -2,7 +2,6 @@
     "include": "~/.config/waybar/modules",
     "layer": "tops",
     "position": "top",
-    "output": ["HDMI-A-1", "eDP-1"],
     "height": 24,
     "spacing": 5,
     "margin-top": 5,
@@ -25,7 +24,7 @@
         "group/hardware",
         "group/laptop",
         "power-profiles-daemon",
-        "group/group-power",
+        "custom/power"
     ],
 
     "hyprland/workspaces": {

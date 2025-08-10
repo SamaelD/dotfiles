@@ -1,4 +1,5 @@
 export PATH=$PATH:$HOME/bin:$HOME/bin/work:/home/linuxbrew/.linuxbrew/bin:/usr/lib/qt6/bin/:$HOME/.local/bin
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk
 
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 [ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
@@ -83,8 +84,10 @@ eval "$(zoxide init zsh)"
 alias cp="cp -i"                                                # Confirm before overwriting something
 alias df='df -h'                                                # Human-readable sizes
 alias ls="eza --color=always --group"
-alias cd="z"
+alias cd='z'
 alias grep='grep --color'
+alias ne='nvim $(fd -t f | fzf)'
+alias project='cd $(fd -t d | fzf) && nvim'
 # thefuck alias
 eval $(thefuck --alias)
 

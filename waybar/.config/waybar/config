@@ -27,7 +27,7 @@
         "group/hardware",
         "group/laptop",
         "power-profiles-daemon",
-        "group/group-power"
+        "custom/power"
     ],
     "swap/workspaces": {
         "format": "{icon} {name}",
