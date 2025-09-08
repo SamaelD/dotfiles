@@ -39,9 +39,35 @@ label:focus {
 
 #waybar {
     color: @blue;
-    background-color: rgba(43, 48, 59, 0.5);
+    background-color: transparent;
+    box-shadow: none;
     border-radius: 20px;
     margin: 5px 5px;
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+.modules-left {
+    background-color: rgba(30, 30, 30, 0.8);
+    border-radius: 20px;
+    padding: 0 10px;
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+.modules-center {
+    background-color: rgba(30, 30, 30, 0.8);
+    border-radius: 20px;
+    padding: 0 10px;
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+.modules-right {
+    background-color: rgba(43, 48, 59, 0.5);
+    background-color: rgba(30, 30, 30, 0.8);
+    padding: 0 10px;
+    border-radius: 20px;
     transition-property: background-color;
     transition-duration: .5s;
 }
