@@ -198,14 +198,14 @@
     },
 
     "custom/pacman": {
-        "format": "{icon}{} ",
+        "format": "{} {icon}",
         "return-type": "json",
         "format-icons": {
-            "pending-updates": " 󱍷  ",
-            "updated": "󰂪"
+            "has-updates": "󱍷  ",
+            "updated": "󰂪 "
         },
-        "exec-if": "which waybar-updates",
-        "exec": "waybar-updates"
+        "exec-if": "which waybar-module-pacman-updates",
+        "exec": "waybar-module-pacman-updates --no-zero-output --color-semver-updates"
     },
 
     "custom/power": {

@@ -14,7 +14,7 @@
         "hyprland/window",
     ],
     "modules-center": [
-        "group/middle"
+        "group/middle",
     ],
     "modules-right": [
         "hyprland/language",
