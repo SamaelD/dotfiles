@@ -13,7 +13,7 @@ set $ws10 "10"
 # font pango:JetBrainsMono Nerd Font 8a
 font pango:monospace 8
 
-exec --no-startup-id "xrandr --output HDMI-1 --mode 2560x1440 -r 120 --primary --pos 0x0 --output eDP-1 --mode 1920x1200 -r 60 --pos 2560x0"
+exec --no-startup-id "xrandr --output HDMI-1 --mode 2560x1440 -r 120 --primary --pos 0x0 --output eDP-1 --mode 1920x1200 -r 120 --pos 320x1440"
 exec --no-startup-id nitrogen --restore
 
 exec_always --no-startup-id picom --config ~/.config/i3/picom.conf
@@ -47,7 +47,7 @@ bindcode $mod+40 exec "rofi -modi drun,run -show drun"
 bindsym control+$mod+o exec --no-startup-id ~/.config/i3/scripts/picom-toggle.sh
 
 # start a terminal
-bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec kitty
 # kill focused window
 bindsym $mod+q kill
 # change focus
@@ -136,7 +136,7 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-for_window [class="^.*"] border pixel 0
+for_window [class="^.*"] border pixel 2
 
 gaps inner 4
 gaps outer 4
