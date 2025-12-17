@@ -45,6 +45,13 @@ final_space = true
     [blocks.segments.properties.ignore_submodules]
       "*" = "all"
 
+    [[blocks.segments]]
+      type = 'python'
+      style = 'plain'
+      background = 'transparent'
+      foreground = 'green'
+      template = '  {{ if .Venv }}{{ .Venv }} {{ end }}{{ .Full }}'
+
 [[blocks]]
   type = 'rprompt'
   overflow = 'hidden'
