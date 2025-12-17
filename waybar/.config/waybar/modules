@@ -185,6 +185,20 @@
         "on-click": "amixer set Capture toggle"
     },
 
+    "custom/tlp": {
+        "format": "{icon}",
+        "format-icons": {
+            "battery": " ",
+            "AC": "  "
+        },
+        "exec": "~/.config/waybar/scripts/tlp-ctl.sh get --json",
+        "exec-on-event": true,
+        "return-type": "json",
+        "interval": 20,
+        "on-click": "~/.config/waybar/scripts/tlp-ctl.sh toggle",
+        "on-click-right": "~/.config/waybar/scripts/tlp-ctl.sh set auto"
+    },
+
     "power-profiles-daemon": {
         "format": " {icon} ",
         "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
@@ -201,7 +215,7 @@
         "format": "{} {icon}",
         "return-type": "json",
         "format-icons": {
-            "has-updates": "󱍷  ",
+            "has-updates": "󱍷 ",
             "updated": "󰂪 "
         },
         "exec-if": "which waybar-module-pacman-updates",

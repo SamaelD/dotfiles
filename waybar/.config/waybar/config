@@ -26,8 +26,8 @@
         "group/audio",
         "group/hardware",
         "group/laptop",
-        "power-profiles-daemon",
-        "custom/power"
+        "custom/tlp",
+        "custom/power",
     ],
     "swap/workspaces": {
         "format": "{icon} {name}",
