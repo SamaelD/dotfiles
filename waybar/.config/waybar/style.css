@@ -140,7 +140,7 @@ label:focus {
 }
 
 #battery {
-    padding-left: 10;
+    padding-left: 10px;
     color: @blue;
 }
 
@@ -232,22 +232,6 @@ label:focus {
     animation-timing-function: steps(12);
     animation-iteration-count: infinite;
     animation-direction: alternate;
-}
-
-#power-profiles-daemon:hover {
-    background-color: @overlay1;
-}
-
-#power-profiles-daemon.performance {
-    color: @red;
-}
-
-#power-profiles-daemon.balanced {
-    color: @blue;
-}
-
-#power-profiles-daemon.power-saver {
-    color: @green
 }
 
 #custom-power {

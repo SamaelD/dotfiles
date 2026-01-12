@@ -1,8 +1,8 @@
 {
-    "include": "~/.config/waybar/modules",
+    "include": "~/.config/waybar/modules.jsonc",
     "layer": "tops",
     "position": "top",
-    "height": 24,
+    "height": 34,
     "spacing": 5,
     "margin-top": 5,
     "margin-bottom": 0,
@@ -11,10 +11,10 @@
     "ipc": true,
     "modules-left": [
         "hyprland/workspaces",
-        "hyprland/window",
+        "hyprland/window"
     ],
     "modules-center": [
-        "group/middle",
+        "group/middle"
     ],
     "modules-right": [
         "hyprland/language",
@@ -23,10 +23,9 @@
         "group/audio",
         "group/hardware",
         "group/laptop",
-        "power-profiles-daemon",
-        "custom/power",
+        "custom/tlp",
+        "custom/power"
     ],
-
     "hyprland/workspaces": {
         "format": "{icon} {name} {windows}",
         "format-icons": {
@@ -41,23 +40,25 @@
             "class<Vivaldi-stable>": "𝕍",
             "title<.*youtube.*>": " ",
             "class<firefox>": " ",
+            "class<zen>": " ",
             "class<teams-for-linux>": " ",
-            "class<kitty>": " ",
+            "class<kitty>": "󰄛 ",
             "class<chat-gpt>": " ",
             "class<Nemo>": " ",
             "class<dlt-viewer>": " ",
             "class<steam>": " ",
             "class<Google-chrome>": " ",
             "class<org.kde.okular>": " ",
-            "title<Telegram.*>": " ",
+            "class<jetbrains-studio>": " ",
+            "title<Telegram.*|org.telegram.desktop>": " ",
             "title<Qt Creator>": " ",
-            "title<nvim.*>": " ",
-        },
+            "title<nvim.*>": " "
+        }
     },
     "hyprland/window": {
-        "format": "➤ {title}",
+        "format": "➤ {title}"
     },
     "hyprland/language": {
-        "format": "{short}",
-    },
+        "format": "{short}"
+    }
 }

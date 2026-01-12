@@ -1,8 +1,11 @@
 {
-    "include": "~/.config/waybar/modules",
+    "include": "~/.config/waybar/modules.jsonc",
     "layer": "tops",
     "position": "top",
-    "output": ["HDMI-A-1", "eDP-1"],
+    "output": [
+        "HDMI-A-1",
+        "eDP-1"
+    ],
     "height": 24,
     "spacing": 5,
     "margin-top": 5,
@@ -27,7 +30,7 @@
         "group/hardware",
         "group/laptop",
         "custom/tlp",
-        "custom/power",
+        "custom/power"
     ],
     "swap/workspaces": {
         "format": "{icon} {name}",
@@ -45,14 +48,14 @@
             "class<kitty>": " ",
             "class<ChatGPT Desktop>": " ",
             "class<Nemo>": " ",
-            "class<dlt-viewer>": " ",
-        },
+            "class<dlt-viewer>": " "
+        }
     },
     "swap/window": {
         "format": "➤ {title}",
-        "all-outputs": true,
+        "all-outputs": true
     },
     "sway/language": {
-        "on-click": "swaymsg input type:keyboard xkb_switch_layout next",
-    },
+        "on-click": "swaymsg input type:keyboard xkb_switch_layout next"
+    }
 }

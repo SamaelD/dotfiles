@@ -4,11 +4,16 @@
         "interval": 1,
         "height": 30,
         "width": 30,
-        "avatar": "~/.config/hypr/avatar.png",
+        "avatar": "~/.config/hypr/avatar.png"
     },
     "group/middle": {
         "orientation": "inherit",
-        "modules": ["tray", "clock", "custom/weather", "custom/notification"]
+        "modules": [
+            "tray",
+            "clock",
+            "custom/notification",
+            "custom/weather"
+        ]
     },
     "clock": {
         "format": "{:%a, %d. %b  %H:%M:%S}",
@@ -16,32 +21,35 @@
         "tooltip-format": "<tt><small>{calendar}</small></tt>",
         "timezone": "Europe/Kyiv",
         "calendar": {
-            "mode"          : "month",
-            "mode-mon-col"  : 3,
-            "weeks-pos"     : "left",
-            "on-scroll"     : 1,
+            "mode": "month",
+            "mode-mon-col": 3,
+            "weeks-pos": "left",
+            "on-scroll": 1,
             "format": {
-                "months":     "<span color='#ffead3'><b>{}</b></span>",
-                "days":       "<span color='#ecc6d9'><b>{}</b></span>",
-                "weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
-                "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
-                "today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
+                "months": "<span color='#ffead3'><b>{}</b></span>",
+                "days": "<span color='#ecc6d9'><b>{}</b></span>",
+                "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+                "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+                "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
             }
         },
-        "actions":  {
-            "on-click-right": "mode",
+        "actions": {
+            "on-click-right": "mode"
         }
     },
-
     "tray": {
         "spacing": 10,
         "icon-size": 21,
-        "show-passive-items": true,
+        "show-passive-items": true
     },
-
     "group/hardware": {
         "orientation": "inherit",
-        "modules": ["cpu", "memory", "custom/swap", "disk"]
+        "modules": [
+            "cpu",
+            "memory",
+            "custom/swap",
+            "disk"
+        ]
     },
     "cpu": {
         "interval": 10,
@@ -50,12 +58,12 @@
     },
     "memory": {
         "format": " {}%",
-        "justify": "center",
+        "justify": "center"
     },
     "custom/swap": {
         "format": "  {}%",
         "exec": "~/.config/waybar/scripts/read_swap.sh",
-        "interval": 30,
+        "interval": 30
     },
     "disk": {
         "interval": 30,
@@ -70,7 +78,7 @@
         "orientation": "inherit",
         "modules": [
             "network",
-            "bluetooth",
+            "bluetooth"
         ]
     },
     "bluetooth": {
@@ -81,7 +89,7 @@
         "tooltip-format-connected": "{device_enumerate}",
         "tooltip-format-enumerate-connected": " {device_alias} 󰂄{device_battery_percentage}%",
         "tooltip": true,
-        "on-click": "blueman-manager",
+        "on-click": "blueman-manager"
     },
     "network": {
         "format": "{ifname}",
@@ -95,32 +103,33 @@
         "tooltip-format-disconnected": "󰌙 Disconnected",
         "max-length": 30,
         "format-icons": [
-            "󰤯", "󰤟", "󰤢", "󰤥", "󰤨"
+            "󰤯",
+            "󰤟",
+            "󰤢",
+            "󰤥",
+            "󰤨"
         ],
         "on-click": "~/.config/waybar/scripts/toggle_wifi.sh"
     },
-
     "group/laptop": {
         "orientation": "inherit",
         "modules": [
             "backlight",
-            "battery",
+            "battery"
         ]
     },
-
     "backlight": {
         "format": "{icon} {percent}%",
         "format-icons": [
             " ",
-        " ",
-        " ",
-        "󰃝 ",
-        "󰃞 ",
-        "󰃟 ",
-        "󰃠 "
-        ],
+            " ",
+            " ",
+            "󰃝 ",
+            "󰃞 ",
+            "󰃟 ",
+            "󰃠 "
+        ]
     },
-
     "battery": {
         "full-at": 95,
         "states": {
@@ -132,18 +141,27 @@
         "format-charging": "  {capacity}%",
         "format-plugged": "󱘖  {capacity}%",
         "format-icons": [
-            "󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"
-        ],
+            "󰂎",
+            "󰁺",
+            "󰁻",
+            "󰁼",
+            "󰁽",
+            "󰁾",
+            "󰁿",
+            "󰂀",
+            "󰂁",
+            "󰂂",
+            "󰁹"
+        ]
     },
-
     "custom/weather": {
-        "format": "{}°",
-        "tooltip": true,
-        "interval": 3600,
-        "exec": "wttrbar",
-        "return-type": "json"
+        "format": " {}",
+        "exec": "waybar-weather",
+        "restart-interval": 60,
+        "return-type": "json",
+        "hide-empty-text": true,
+        "on-click": "pkill -USR1 waybar-weather"
     },
-
     "group/audio": {
         "orientation": "inherit",
         "drawer": {
@@ -153,10 +171,9 @@
         },
         "modules": [
             "pulseaudio",
-            "pulseaudio#microphone",
+            "pulseaudio#microphone"
         ]
     },
-
     "pulseaudio": {
         "format": " {icon} {volume}% ",
         "format-bluetooth": "{icon} {volume}%",
@@ -169,12 +186,18 @@
             "phone": "",
             "portable": "",
             "car": "",
-            "default": ["󰕿", "󰖀", "󰕾"]
+            "default": [
+                "󰕿",
+                "󰖀",
+                "󰕾"
+            ]
         },
         "scroll-step": 5,
         "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
         "on-click-right": "pavucontrol",
-        "ignored-sinks": ["Easy Effects Sink"]
+        "ignored-sinks": [
+            "Easy Effects Sink"
+        ]
     },
     "pulseaudio#microphone": {
         "format": "{format_source}",
@@ -184,13 +207,14 @@
         "scroll-step": 5,
         "on-click": "amixer set Capture toggle"
     },
-
     "custom/tlp": {
         "format": "{icon}",
         "format-icons": {
-            "battery": " ",
-            "AC": "  "
+            "balanced/BAT": "<span foreground='#99ffdd'>  </span>",
+            "performance/AC": "<span foreground='red'> </span>",
+            "power-saver/SAV": "<span foreground='#ff6699'> </span>"
         },
+        "tooltip": false,
         "exec": "~/.config/waybar/scripts/tlp-ctl.sh get --json",
         "exec-on-event": true,
         "return-type": "json",
@@ -198,19 +222,6 @@
         "on-click": "~/.config/waybar/scripts/tlp-ctl.sh toggle",
         "on-click-right": "~/.config/waybar/scripts/tlp-ctl.sh set auto"
     },
-
-    "power-profiles-daemon": {
-        "format": " {icon} ",
-        "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
-        "tooltip": true,
-        "format-icons": {
-            "default": "",
-            "performance": "",
-            "balanced": "",
-            "power-saver": ""
-        }
-    },
-
     "custom/pacman": {
         "format": "{} {icon}",
         "return-type": "json",
@@ -221,13 +232,11 @@
         "exec-if": "which waybar-module-pacman-updates",
         "exec": "waybar-module-pacman-updates --no-zero-output --color-semver-updates"
     },
-
     "custom/power": {
-        "format": " 󰐥 ",
+        "format": "󰐥 ",
         "on-click": "wlogout --protocol layer-shell -b 2",
         "tooltip": false
     },
-
     "custom/notification": {
         "tooltip": false,
         "format": "{icon} ",
@@ -247,5 +256,5 @@
         "on-click": "swaync-client -t -sw",
         "on-click-right": "swaync-client -d -sw",
         "escape": true
-    },
+    }
 }

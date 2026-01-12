@@ -39,7 +39,8 @@ function Help() {
 # ---- Mode functions ----
 
 get_mode() {
-    local mode=$(tlp-stat -m)
+    local mode
+    mode=$(tlp-stat -m)
     local handling
     case "$mode" in
         *"(manual)" )
@@ -69,7 +70,8 @@ set_mode() {
 }
 
 toggle_mode() {
-    local mode=$(tlp-stat -m)
+    local mode
+    mode=$(tlp-stat -m)
     case "$mode" in
         battery* ) 
             pkexec tlp ac;;
@@ -78,8 +80,6 @@ toggle_mode() {
     esac
 }
 
-
-# ---- Lib functions ----
 
 function print_mode() {
     local param="$1"
@@ -107,9 +107,6 @@ function print_mode() {
             [ -n "$mode" ] && echo "$mode" || echo "$param";;
     esac
 }
-
-
-# ==== Main ====
 
 if [[ "$1" == "-h" || "$1" == "--help" ]]; then
     Help
