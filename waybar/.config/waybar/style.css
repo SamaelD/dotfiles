@@ -38,7 +38,7 @@ label:focus {
 }
 
 #waybar {
-    color: @blue;
+    color: @text;
     background-color: transparent;
     box-shadow: none;
     border-radius: 20px;
@@ -107,7 +107,7 @@ label:focus {
 }
 
 #workspaces button.visible {
-    color: @blue;
+    color: @sky;
 }
 
 #workspaces button.focused {
@@ -132,27 +132,32 @@ label:focus {
 
 #clock {
     padding: 0 10px;
-    color: @blue;
+    color: @text;
 }
 
 #custom-weather {
-    color: @blue;
+    color: @text;
 }
 
 #battery {
     padding-left: 10px;
-    color: @blue;
+    color: @text;
 }
 
 #cpu,
+#custom-swap,
 #memory,
 #disk {
     padding: 0 5px;
-    color: @blue;
+    color: @subtext0;
 }
 
 #disk.low {
     color: @red;
+}
+
+#tray {
+    color: @blue;
 }
 
 #tray>.passive {
@@ -232,6 +237,15 @@ label:focus {
     animation-timing-function: steps(12);
     animation-iteration-count: infinite;
     animation-direction: alternate;
+}
+
+#battery.warning {
+    color: @orange;
+}
+
+#battery.full,
+#battery.good {
+    color: @green;
 }
 
 #custom-power {

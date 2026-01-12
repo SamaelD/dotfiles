@@ -82,12 +82,12 @@
         ]
     },
     "bluetooth": {
-        "format": "  ",
+        "format": "<span foreground='#0082FC'>  </span>",
         "format-disabled": "󰂳",
-        "format-connected": "󰂱 {num_connections}",
-        "tooltip-format": " {device_alias}",
+        "format-connected": "<span foreground='#0082FC'> 󰂱 {num_connections}</span>",
+        "tooltip-format": "  {device_alias}",
         "tooltip-format-connected": "{device_enumerate}",
-        "tooltip-format-enumerate-connected": " {device_alias} 󰂄{device_battery_percentage}%",
+        "tooltip-format-enumerate-connected": " {device_alias} 󰂄 {device_battery_percentage}%",
         "tooltip": true,
         "on-click": "blueman-manager"
     },
@@ -98,7 +98,7 @@
         "format-disconnected": "󰌙",
         "tooltip-format": "{ipaddr}  {bandwidthUpBits}  {bandwidthDownBits}",
         "format-linked": "󰈁 {ifname} (No IP)",
-        "tooltip-format-wifi": "{essid} {icon} {signalStrength}%",
+        "tooltip-format-wifi": "{icon}   {signalStrength}% {essid}",
         "tooltip-format-ethernet": "{ifname} 󰌘",
         "tooltip-format-disconnected": "󰌙 Disconnected",
         "max-length": 30,
@@ -178,7 +178,7 @@
         "format": " {icon} {volume}% ",
         "format-bluetooth": "{icon} {volume}%",
         "format-bluetooth-muted": " {icon}",
-        "format-muted": "󰸈",
+        "format-muted": " 󰸈 ",
         "format-icons": {
             "headphone": "",
             "hands-free": "",
@@ -204,7 +204,8 @@
         "format-source": "  {volume}%",
         "format-source-muted": " ",
         "tooltip-format": "{source_desc} | {source_volume}%",
-        "scroll-step": 5,
+        "on-scroll-up": "amixer set Capture 5%+",
+        "on-scroll-down": "amixer set Capture 5%-",
         "on-click": "amixer set Capture toggle"
     },
     "custom/tlp": {
